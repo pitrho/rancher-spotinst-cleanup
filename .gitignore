@@ -1,0 +1,8 @@
+# virtual environment
+env
+
+# environment files
+.env
+
+# build files
+*.zip
