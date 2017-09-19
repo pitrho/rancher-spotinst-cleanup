@@ -7,7 +7,7 @@ import requests
 import time
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 def _remove_containers(host, headers):
@@ -33,8 +33,13 @@ def _delete_host(host, headers):
     res_data = res.json()
     state = res_data['state']
     count = 0
+    print('Host state: {0}'.format(state))
     while state != 'inactive' and count < 60:
         res = requests.get(url, headers=headers)
+        res_data = res.json()
+        state = res_data['state']
+        print('Host state: {0}'.format(state))
+
         count += 1
         time.sleep(0.5)
 
